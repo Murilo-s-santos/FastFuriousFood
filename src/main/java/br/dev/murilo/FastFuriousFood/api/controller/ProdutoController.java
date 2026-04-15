@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ProdutoController 
 {
-    /*@PersistenceContext
-    private EntityManager manager;*/
+    @PersistenceContext
+    private EntityManager manager;
     
-    @Autowired
-    private ProdutoRepository produtoRepository;
+    //@Autowired
+    //private ProdutoRepository produtoRepository;
     
     @GetMapping("/produtos")
     public List<Produto> listas() 
     {
-        //return manager.createQuery("from Produto", Produto.class).getResultList();
-        return produtoRepository.findAll();
+        return manager.createQuery("from Produto", Produto.class).getResultList();
+        //return produtoRepository.findAll();
     }
     
 }

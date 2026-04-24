@@ -14,17 +14,17 @@ public class Produto
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;
-    private double preco;
-    private String ingredientes;
+    private double vUnit;
+    private String descricao;
 
     public Produto() {
     }
 
-    /*public Produto(long id, String nome, double preco, String ingredientes) {
+    /*public Produto(long id, String nome, double vUnit, String descricao) {
         this.id = id;
         this.nome = nome;
-        this.preco = preco;
-        this.ingredientes = ingredientes;
+        this.vUnit = vUnit;
+        this.descricao = descricao;
     }*/
 
     public long getId() {
@@ -44,20 +44,20 @@ public class Produto
     }
 
     public double getPreco() {
-        return preco;
+        return vUnit;
     }         
             
 
-    public void setPreco(double preco) {
-        this.preco = preco;
+    public void setPreco(double vUnit) {
+        this.vUnit = vUnit;
     }
 
     public String getIngredientes() {
-        return ingredientes;
+        return descricao;
     }
 
-    public void setIngredientes(String ingredientes) {
-        this.ingredientes = ingredientes;
+    public void setIngredientes(String descricao) {
+        this.descricao = descricao;
     }
 
     @Override

@@ -1,9 +1,16 @@
 package br.dev.murilo.FastFuriousFood.domain.model;
 
+import br.dev.murilo.FastFuriousFood.domain.model.enums.StatusPedido;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Pedido 
@@ -13,6 +20,16 @@ public class Pedido
     private long id;
     private String cpf;
     private String nome;
+    
+    @Enumerated(EnumType.STRING)
+    private StatusPedido status;
+    
+    private LocalDateTime dtAberto;
+    private LocalDateTime dtPronto;
+    private LocalDateTime dtEntregue;
+    
+    @OneToMany(mappedBy = "pedido")
+    private List<ItemPedido> itens = new ArrayList<>();
 
     public long getId() {
         return id;

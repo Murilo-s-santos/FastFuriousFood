@@ -18,7 +18,9 @@ public class Pedido
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    
     private String cpf;
+    
     private String nome;
     
     @Enumerated(EnumType.STRING)
@@ -30,7 +32,11 @@ public class Pedido
     
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens = new ArrayList<>();
-
+    
+    public Pedido(){}
+    
+    
+    
     public long getId() {
         return id;
     }
@@ -55,9 +61,6 @@ public class Pedido
         this.nome = nome;
     }
 
-    public Pedido() {
-    }
-
     @Override
     public int hashCode() {
         int hash = 5;
@@ -79,10 +82,45 @@ public class Pedido
         final Pedido other = (Pedido) obj;
         return this.id == other.id;
     }
-    
-        
-    
+
+    public StatusPedido getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusPedido status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getDtAberto() {
+        return dtAberto;
+    }
+
+    public void setDtAberto(LocalDateTime dtAberto) {
+        this.dtAberto = dtAberto;
+    }
+
+    public LocalDateTime getDtPronto() {
+        return dtPronto;
+    }
+
+    public void setDtPronto(LocalDateTime dtPronto) {
+        this.dtPronto = dtPronto;
+    }
+
+    public LocalDateTime getDtEntregue() {
+        return dtEntregue;
+    }
+
+    public void setDtEntregue(LocalDateTime dtEntregue) {
+        this.dtEntregue = dtEntregue;
+    }
+
+    public List<ItemPedido> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemPedido> itens) {
+        this.itens = itens;
+    }
       
-    
-    
 }

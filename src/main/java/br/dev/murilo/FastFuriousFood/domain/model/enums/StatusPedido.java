@@ -9,5 +9,8 @@ package br.dev.murilo.FastFuriousFood.domain.model.enums;
  * @author sesi3dib
  */
 public enum StatusPedido {
-    
+    ABERTO,
+    PRONTO,
+    ENTREGUE,
+    CANCELADO
 }

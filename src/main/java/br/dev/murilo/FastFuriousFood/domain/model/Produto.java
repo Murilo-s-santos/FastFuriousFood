@@ -1,6 +1,9 @@
 package br.dev.murilo.FastFuriousFood.domain.model;
 
+import br.dev.murilo.FastFuriousFood.domain.model.enums.CategoriaProduto;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -8,24 +11,21 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Produto")
-public class Produto 
-{
+public class Produto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    
     private String nome;
     private double vUnit;
     private String descricao;
 
+    @Enumerated(EnumType.STRING)
+    private CategoriaProduto categoria;
+
     public Produto() {
     }
-
-    /*public Produto(long id, String nome, double vUnit, String descricao) {
-        this.id = id;
-        this.nome = nome;
-        this.vUnit = vUnit;
-        this.descricao = descricao;
-    }*/
 
     public long getId() {
         return id;
@@ -43,21 +43,30 @@ public class Produto
         this.nome = nome;
     }
 
-    public double getPreco() {
+    // Ajustado para refletir o nome do atributo vUnit
+    public double getvUnit() {
         return vUnit;
-    }         
-            
+    }
 
-    public void setPreco(double vUnit) {
+    public void setvUnit(double vUnit) {
         this.vUnit = vUnit;
     }
 
-    public String getIngredientes() {
+    // Ajustado para refletir o nome do atributo descricao
+    public String getDescricao() {
         return descricao;
     }
 
-    public void setIngredientes(String descricao) {
+    public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public CategoriaProduto getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaProduto categoria) {
+        this.categoria = categoria;
     }
 
     @Override
@@ -69,23 +78,9 @@ public class Produto
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
         final Produto other = (Produto) obj;
         return this.id == other.id;
     }
-    
-    
-    
-    
-    
-    
-    
 }
